@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker compose up -d
+docker compose -f docker/kafka.yml up -d
