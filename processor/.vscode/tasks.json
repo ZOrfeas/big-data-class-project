@@ -3,7 +3,7 @@
 	"tasks": [
 		{
 			"type": "java",
-			"mainClass": "com.bigdataclass.App",
+			"mainClass": "uni.processor.DataStreamJob",
 			"targetPath": "${workspaceFolder}/${workspaceFolderBasename}.jar",
 			"elements": [
 				"${compileOutput}",
