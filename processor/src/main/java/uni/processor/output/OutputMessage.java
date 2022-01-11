@@ -1,5 +1,6 @@
 package uni.processor.output;
 
-public class OutputMessage {
-    
+import uni.processor.input.InputMessage;
+
+public class OutputMessage extends InputMessage {    
 }
