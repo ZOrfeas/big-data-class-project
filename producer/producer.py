@@ -14,9 +14,6 @@ topic='sensors'
 interval=1 # seconds
 duration=1 # mins
 
-# Placeholder, can be replaced with something better
-
-
 def formatData(id, interval, duration, ):
     sampleCount = int(duration*60/interval)
     lateEventCount = int(sampleCount/30)
