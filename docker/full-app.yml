@@ -59,7 +59,6 @@ services:
     container_name: redis
     ports:
       - "6379:6379"
-<<<<<<< HEAD
 
 ############################################################
 ############################################################
@@ -75,27 +74,3 @@ services:
       - GF_AUTH_BASIC_ENABLED=false
       - GF_ENABLE_GZIP=true
       - GF_INSTALL_PLUGINS=redis-datasource
-=======
-#############################################################
-#############################################################
-
-  grafana_redis_source:
-    build: ./redis_source/
-    environment: 
-      - "REDIS_HOST=redis"
-    depends_on:
-      - redis
-
-#############################################################
-#############################################################
-
-  grafana:
-    build: ./grafana/
-    ports:
-      - "3000:3000"
-    depends_on:
-      - grafana_redis_source
-
-
-
->>>>>>> 7921b32556ab599abd3ced6858b02dade4b39f21
