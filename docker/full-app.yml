@@ -59,23 +59,6 @@ services:
     container_name: redis
     ports:
       - "6379:6379"
-<<<<<<< HEAD
-
-############################################################
-############################################################
-
-  grafana:
-    container_name: grafana
-    image: grafana/grafana:latest
-    ports:
-      - "3000:3000"
-    environment:
-      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
-      - GF_AUTH_ANONYMOUS_ENABLED=true
-      - GF_AUTH_BASIC_ENABLED=false
-      - GF_ENABLE_GZIP=true
-      - GF_INSTALL_PLUGINS=redis-datasource
-=======
 #############################################################
 #############################################################
 
@@ -98,4 +81,3 @@ services:
 
 
 
->>>>>>> 7921b32556ab599abd3ced6858b02dade4b39f21
