@@ -1,7 +1,9 @@
 package uni.processor.output;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 
 import com.redislabs.redistimeseries.Aggregation;
 import com.redislabs.redistimeseries.Measurement;
@@ -31,7 +33,9 @@ public class RedisSinkFunction extends RichSinkFunction<OutputMessage> {
         logger.info("Creating time-series with id: {}", id);
         boolean created = false;
         try {
-            created = rts.create(id);
+            Map<String, String> labels = new HashMap<>();
+            labels.put("producer", id);
+            created = rts.create(id, labels);
         } catch (Exception e) {
             logger.error("Failed to create {}", id, e);
         }
