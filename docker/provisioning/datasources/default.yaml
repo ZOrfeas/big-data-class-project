@@ -1,0 +1,11 @@
+apiVersion: 1
+
+datasources:
+  - name: Redis
+    type: redis-datasource
+    access: proxy
+    orgId: 1
+    isDefault: true
+    url: redis:6379
+    version: 1
+    editable: true

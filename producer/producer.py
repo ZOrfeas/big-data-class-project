@@ -12,7 +12,7 @@ id='producer_1'
 server='localhost:9092'
 topic='sensors'
 interval=1 # seconds
-duration=1 # mins
+duration=15 # mins
 
 def formatData(id, interval, duration, ):
     sampleCount = int(duration*60/interval)
@@ -20,7 +20,7 @@ def formatData(id, interval, duration, ):
     print(f'Generating {sampleCount} samples')
     counter=0
     for _ in range(sampleCount):
-        now = datetime.now().isoformat()
+        now = (datetime.now() - timedelta(days=1)).isoformat()
         sampledAt = now
         if lateEventCount != 0 and (counter == 30 or counter+random.randint(1, 4) == 30):
             counter = 0
