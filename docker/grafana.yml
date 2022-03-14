@@ -12,3 +12,5 @@ services:
       - GF_AUTH_BASIC_ENABLED=false
       - GF_ENABLE_GZIP=true
       - GF_INSTALL_PLUGINS=redis-datasource
+    volumes:
+      - ./provisioning/datasources:/etc/grafana/provisioning/datasources
