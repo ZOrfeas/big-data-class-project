@@ -79,7 +79,7 @@ services:
 
 
   grafana:
-    container_name: grafana
+    container_name: grafana_latest
     image: grafana/grafana:latest
     ports:
       - "3000:3000"

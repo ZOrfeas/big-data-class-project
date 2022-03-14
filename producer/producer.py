@@ -38,19 +38,23 @@ serializer = lambda v: json.dumps(v).encode('ascii')
 
 def main(id, server, topic, interval, duration):
     print(f'Creating producer {id} on {server}')
-    producer = KafkaProducer(
-        client_id=f'{id}',
-        bootstrap_servers=[server],
-        value_serializer=serializer,
-        api_version=(0, 10, 1)
-    )
+    # producer = KafkaProducer(
+    #     client_id=f'{id}',
+    #     bootstrap_servers=[server],
+    #     value_serializer=serializer,
+    #     api_version=(0, 10, 1)
+    # )
     print(f'Producer {id} created')
     readyToSendData = formatData(id, interval, duration)
     print(f'Sending samples')
     for data in readyToSendData:
-        producer.send(topic, data)
-        sleep(interval)
-    print(f'Producer {id} finished')
+        print(data)
+        break
+
+    # for data in readyToSendData:
+    #     producer.send(topic, data)
+    #     sleep(interval)
+    # print(f'Producer {id} finished')
 
 if __name__ == '__main__':
     if len(sys.argv) > 1 and sys.argv[1] == 'help':
