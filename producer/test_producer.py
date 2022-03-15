@@ -29,7 +29,7 @@ def formatData(id, interval, duration, data):
             now = (datetime.strptime(date,'%Y-%m-%dT%H:%M:%S.%f') - timedelta(days=numDays,minutes=minutes*15)).isoformat()
             sampledAt = now
             if (counter == 30 or counter+random.randint(1, 4) == 30):
-                print("lateEventCount")
+                # print("lateEventCount")
                 counter = 0
                 sampledAt = (datetime.strptime(now, '%Y-%m-%dT%H:%M:%S.%f') - timedelta(minutes=random.randint(10,20))).isoformat()
             counter += 1
@@ -58,11 +58,11 @@ def main(id, server, topic, interval, duration, data):
     for data in readyToSendData:
         count+=1
         if count<= 50 : 
-            # producer.send(topic,data)
-            print(data)
+            producer.send(topic,data)
+            # print(data)
         else : 
-            print(data)
-            # producer.send(topic, data)
+            # print(data)
+            producer.send(topic, data)
             sleep(interval)
     print(f'Producer {id} finished')
 
