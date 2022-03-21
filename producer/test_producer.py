@@ -37,7 +37,8 @@ def formatData(id, interval, duration, data):
                 'id': id,
                 'created_at': now,
                 'sampled_at': sampledAt,
-                'value': data[numDays*96 + minutes][0]
+                # 'value': data[(numDays*96 + minutes)*int(id[-1])][0]
+                'value': data[numDays*96 + minutes+(int(id[-1])-1)*(days*96+sampleCount)][0]
             }
 
 serializer = lambda v: json.dumps(v).encode('ascii')
