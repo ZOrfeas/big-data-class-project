@@ -11,9 +11,9 @@ import random
 id='producer_1'
 server='localhost:9092'
 topic='sensors'
-interval=5 # seconds
+interval=10 # seconds
 duration=15 # mins
-days=0
+days=1
 
 def valueGen(filepath):
     lines = open(filepath, 'r').readlines()
@@ -50,7 +50,7 @@ def dataBurstGen(id, interval, days, valueGen):
     sampleCount = int(days*24*60*60/interval)
     lateEventCount = int(sampleCount/30)
     counter=0
-    now = datetime.now() - timedelta(days=days+2)
+    now = datetime.now() - timedelta(days=days+3)
     print(f'Generating {sampleCount} samples for burst')
     for _ in range(sampleCount):
         nowString = now.isoformat()
