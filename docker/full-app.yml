@@ -79,7 +79,7 @@ services:
 
 
   grafana:
-    container_name: grafana
+    container_name: grafana1
     image: grafana/grafana:latest
     ports:
       - "3000:3000"
@@ -88,7 +88,7 @@ services:
       - GF_AUTH_ANONYMOUS_ENABLED=true
       - GF_AUTH_BASIC_ENABLED=false
       - GF_ENABLE_GZIP=true
-      - GF_INSTALL_PLUGINS=redis-datasource
+      - GF_INSTALL_PLUGINS=redis-datasource,golioth-websocket-datasource
       - GF_PATHS_CONFIG=/customIniFolder/grafana.ini
     volumes:
       - ./provisioning/datasources:/etc/grafana/provisioning/datasources
