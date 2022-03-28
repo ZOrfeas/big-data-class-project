@@ -5,6 +5,7 @@ import json
 from datetime import datetime, timedelta
 import sys
 import random
+import redis
 
 # random.seed(100)
 
@@ -13,7 +14,7 @@ server='localhost:9092'
 topic='sensors'
 interval=10 # seconds
 duration=15 # mins
-days=1
+days=0.01
 
 def valueGen(filepath):
     lines = open(filepath, 'r').readlines()
@@ -74,16 +75,19 @@ def main(id, server, topic, interval, duration, days):
         value_serializer=serializer,
         api_version=(0, 10, 1)
     )
+    redisHandle = redis.Redis(host='localhost', port=6379, db=0)
     print(f'Producer {id} created')
     valueGenInst = valueGen('temperature.csv')
     burstData = dataBurstGen(id, interval, days, valueGenInst)
     realTimeData = dataRealTimeGen(id, interval, duration, valueGenInst)
     print(f'Sending burst of {days} days')
     for data in burstData:
+        redisHandle.set(f'live:{data["id"]}', f'{data["value"]}')
         producer.send(topic, data)
 
     print(f'Sending realtime samples')
     for data in realTimeData:
+        redisHandle.set(f'live:{data["id"]}', f'{data["value"]}')
         producer.send(topic, data)
         sleep(interval)
     print(f'Producer {id} finished')

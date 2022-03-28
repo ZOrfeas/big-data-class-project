@@ -74,12 +74,12 @@ services:
     container_name: redis
     ports:
       - "6379:6379"
-#############################################################
-#############################################################
 
+#############################################################
+#############################################################
 
   grafana:
-    container_name: grafana1
+    container_name: grafana
     image: grafana/grafana:latest
     ports:
       - "3000:3000"
@@ -88,18 +88,11 @@ services:
       - GF_AUTH_ANONYMOUS_ENABLED=true
       - GF_AUTH_BASIC_ENABLED=false
       - GF_ENABLE_GZIP=true
-      - GF_INSTALL_PLUGINS=redis-datasource,golioth-websocket-datasource
+      - GF_INSTALL_PLUGINS=redis-datasource
       - GF_PATHS_CONFIG=/customIniFolder/grafana.ini
     volumes:
       - ./provisioning/datasources:/etc/grafana/provisioning/datasources
       - ./grafana:/customIniFolder
-  
-  telegraf:
-    image: telegraf
-    volumes:
-      # Mount for telegraf config
-      - ./telegraf/mytelegraf.conf:/etc/telegraf/telegraf.conf
-    environment: 
-      - DOCKER_INFLUXDB_INIT_ORG=myorg
-      - DOCKER_INFLUXDB_INIT_BUCKET=mybucket
-      - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=mytoken
+
+#############################################################
+#############################################################

@@ -5,7 +5,3 @@ services:
     volumes:
       # Mount for telegraf config
       - ./telegraf/mytele.conf:/etc/telegraf/telegraf.conf
-    environment: 
-      - DOCKER_INFLUXDB_INIT_ORG=myorg
-      - DOCKER_INFLUXDB_INIT_BUCKET=mybucket
-      - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=mytoken
