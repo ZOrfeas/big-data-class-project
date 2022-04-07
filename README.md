@@ -7,11 +7,12 @@
 - producer/producer.py (python sensor emulation)
 
 ## Steps to setup
-From project root:
-`docker compose -f docker/full-app.yml up -d` and optionally `docker compose -f docker/full-app.yml logs -f` to monitor system status
-wait a sec,`./start.sh` (if any permissions issue arrises with the .jar, download manually and adjust).
-and then open a browser at localhost:3000
-Generate an api key from Grafana and paste it the last line of `docker/telegraf/mytele.conf` and startup telegraf by running `docker compose -f docker/telegraf.yml up -d`.
+From project root: `docker compose -f docker/full-app.yml up -d`   
+(and optionally `docker compose -f docker/full-app.yml logs -f` to monitor system status)  
+and wait a sec before running `./start.sh`  
+(if any permissions issue arrises with the .jar, download manually and adjust).  
+Open a browser at localhost:3000, generate an api key from Grafana and paste it the last line of `docker/telegraf/mytele.conf`  
+and startup telegraf by running `docker compose -f docker/telegraf.yml up -d`.  
 If all has gone well the streaming simulation should be ready and fully featured.
 
 ## Optional features
